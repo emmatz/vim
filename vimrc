@@ -2,14 +2,15 @@ set nocompatible    " Recomended by https://engineering.purdue.edu/ece264/16au/s
 
 syntax on               " Turn on syntax highlightied.
 set history=10000       " Keep XX lines of command line history
-set paste               " Compatible for copying and paste.
+"set paste               " Compatible for copying and paste.
 set number              " Add number line
 set foldmethod=syntax   " Fold methods indent, syntax, manual, marker, expr, diff
 set hlsearch            " Highligth occurrences of a word
-"set laststatus=2        " (ls) Shows status line always
+set laststatus=2        " (ls) Shows status line always
 "set relativenumber      " (rnu) Shows relative up and down lines number
 set ruler               " Show the cursor position all the time
 set rulerformat=%l\ col:%v\ (%p%%)\ %L
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\[HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 "set rulerformat=%15(%l,%c%V\ %p%%%)  " Line, column and percentage of file
 
 
@@ -28,6 +29,23 @@ function! UseTabs()
     set noexpandtab   " (noet) Always uses tabs instead of space characters.
     set autoindent    " (ai) Copy indent from current line when starting a new line.
 endfunction
+
+" Shortcuts
+"noremap <C-g> <esc>:w<cr>a
+
+" Save file in insert mode
+inoremap <C-s> <esc>:w<cr>a
+
+" Save a C file, compiles and executes it.
+" modes: NORMAL, INSERT
+noremap <S-C-c> <esc>:!clear<cr><cr> <esc>:w<cr> :!gcc % -o %<.out ; ./%<.out<cr>
+inoremap <S-C-c>  <esc>:!clear<cr><cr> <esc>:w<cr> :!gcc % -o %<.out ; ./%<.out<cr>
+
+
+" Save a C++ file, compiles and executes it.
+" modes: NORMAL, INSERT
+noremap <C-x> <esc>:!clear<cr><cr> <esc>:w<cr> :!g++ % -o %<.out ; ./%<.out<cr>
+inoremap <C-x>  <esc>:!clear<cr><cr> <esc>:w<cr> :!g++ % -o %<.out ; ./%<.out<cr>
 
 
 " Plugins section - curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
