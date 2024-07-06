@@ -53,7 +53,8 @@ noremap <C-x> <esc>:!clear<cr><cr> <esc>:w<cr> :!g++ % -o %<.out ; ./%<.out<cr>
 inoremap <C-x>  <esc>:!clear<cr><cr> <esc>:w<cr> :!g++ % -o %<.out ; ./%<.out<cr>
 
 
-" Plugins section - curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Plugins section - curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" :PlugUpdate and :PlugUpdate
 call plug#begin('~/.vim/plugged')   " Activates vim-plug
 
 Plug 'Yggdroot/indentLine'          " Install indent lines
